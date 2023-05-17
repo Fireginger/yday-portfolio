@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from './globalStyles';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { Navbar, Footer } from './component';
+import Home from './pages/HomePage/Home';
+import Entreprise from './pages/Entreprise/Entreprise';
+import Blog from './pages/Blog/Blog';
+import SignUp from './pages/SignUp/SignUp';
+import ScrollToTop from './component/ScrollToTop';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyle />
+      <ScrollToTop />
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/sign-up' element={<SignUp />}/>
+        <Route path='/entreprises' element={<Entreprise />}/>
+        <Route path='/blog' element={<Blog />}/>
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
